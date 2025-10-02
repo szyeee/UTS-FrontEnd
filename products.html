@@ -1,0 +1,15 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Produk — MalibuShop</title><link rel="stylesheet" href="assets/css/ecommerce.css"></head><body>
+<div id="header-placeholder"></div>
+<div class="container" style="padding-top:18px">
+  <h1>Semua Produk</h1>
+  <div id="controls" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+    <div id="product-filters"></div>
+    <input id="product-search" placeholder="Cari produk..." style="padding:8px;border-radius:8px;border:1px solid #e5e7eb;flex:1">
+  </div>
+  <div class="products-grid small" id="products-grid"></div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="scripts/products.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ renderFilters(); renderProducts('', '', {compact:true}); document.getElementById('product-search') && document.getElementById('product-search').addEventListener('input', function(){ renderProducts(document.querySelector('.filter-btn.active')?document.querySelector('.filter-btn.active').dataset.cat:'', this.value, {compact:true}); }); });</script>
+<script src="scripts/header.js"></script><script src="scripts/cart.js"></script>
+</body></html>

@@ -1,0 +1,10 @@
+/* shipping.css - basic styles */
+body{
+    font-family:Arial,Helvetica,sans-serif
+}
+
+.container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:16px
+}

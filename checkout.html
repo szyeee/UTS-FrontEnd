@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checkout — MalibuShop</title><link rel="stylesheet" href="assets/css/ecommerce.css"></head><body>
+<div id="header-placeholder"></div>
+<div class="container" style="padding-top:18px">
+  <h1>Checkout</h1>
+  <div class="card" style="padding:12px;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <button class="btn" id="continue-payment">Continue to Payment</button>
+      <div style="flex:1;min-width:260px">
+        <input id="voucher-input" placeholder="Apply Voucher" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><button class="btn small" id="apply-voucher">Apply Voucher</button>
+      </div>
+      <button class="btn secondary" id="edit-address">Edit Address</button>
+    </div>
+
+    <div style="margin-top:12px;display:grid;grid-template-columns:1fr 300px;gap:12px">
+      <div>
+        <div class="card" style="padding:12px" id="shipping-options-card"><strong>Choose Shipping</strong><div id="shipping-options" style="margin-top:8px"></div></div>
+        <div class="card" style="padding:12px;margin-top:8px" id="payment-options-card"><strong>Select Payment Method</strong><div id="payment-options" style="margin-top:8px"></div></div>
+      </div>
+      <div class="card" style="padding:12px">
+        <h3>Order Summary</h3>
+        <div id="order-lines"></div>
+        <div class="flex justify-between"><div>Subtotal</div><div id="sum-subtotal">Rp 0</div></div>
+        <div class="flex justify-between"><div>Ongkir</div><div id="sum-shipping">Rp 0</div></div>
+        <div class="flex justify-between"><div>Diskon</div><div id="sum-discount">Rp 0</div></div>
+        <hr>
+        <div class="flex justify-between"><div style="font-weight:800">Total</div><div id="sum-total">Rp 0</div></div>
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button class="btn" id="place-order">Place Order</button>
+          <button class="btn secondary" id="cancel-order">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- address modal -->
+<div id="addr-modal" class="modal" style="display:none"><div class="modal-body">
+  <h3>Edit Address</h3>
+  <input id="addr-name" placeholder="Nama penerima" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
+  <input id="addr-line" placeholder="Alamat lengkap" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
+  <input id="addr-phone" placeholder="No. HP" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
+  <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn secondary" id="addr-cancel">Cancel</button><button class="btn" id="addr-save">Save</button></div>
+</div></div>
+
+<div id="footer-placeholder"></div>
+<script src="scripts/header.js"></script>
+<script src="scripts/cart.js"></script>
+<script src="scripts/checkout.js"></script>
+</body></html>

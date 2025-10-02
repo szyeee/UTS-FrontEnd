@@ -1,0 +1,34 @@
+.site-footer{
+  background:transparent; 
+  padding:28px 20px; 
+  color:var(--muted);
+}
+
+.site-footer .container{
+  display:flex; 
+  gap:20px; 
+  align-items:flex-start; 
+  justify-content:space-between;
+}
+
+.site-footer a{
+  color:var(--muted); 
+  text-decoration:none;
+}
+
+.site-footer .col{
+  max-width:360px
+}
+
+.site-footer small{
+  display:block; 
+  margin-top:12px; 
+  color:#94a3b8
+}
+
+@media(max-width:720px){
+  .site-footer .container{
+    flex-direction:column; 
+    gap:12px;
+  }
+}

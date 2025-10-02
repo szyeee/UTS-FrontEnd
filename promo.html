@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Promo & Voucher — MalibuShop</title>
+  <link rel="stylesheet" href="assets/css/ecommerce.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container" style="padding-top:18px">
+    <div class="card" style="padding:18px">
+      <h1>Promo Menarik & Voucher</h1>
+      <p class="text-muted">Kumpulkan voucher dan nikmati potongan harga saat checkout. Salin kode atau klik gunakan.</p>
+      <div id="promo-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:18px">
+        <!-- promo cards injected by script -->
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    const PROMOS = [
+      {id:1,title:'Diskon Musiman 20%', code:'MUSIM20',desc:'Potongan 20% untuk semua buket (min pembelian Rp 100.000)',valid:'31 Des 2025'},
+      {id:2,title:'Voucher Gratis Ongkir', code:'ONGKIRFREE',desc:'Gratis ongkir untuk wilayah kota (min pembelian Rp 50.000)',valid:'30 Sep 2025'},
+      {id:3,title:'Buy 2 Get 1', code:'B2G1',desc:'Beli 2 produk tertentu, dapat 1 gratis (terbatas)',valid:'30 Nov 2025'},
+      {id:4,title:'Diskon Pelanggan Baru', code:'HELLO10',desc:'Diskon 10% untuk pembeli pertama',valid:'31 Des 2025'}
+    ];
+    function renderPromos(){
+      const grid = document.getElementById('promo-grid');
+      grid.innerHTML='';
+      PROMOS.forEach(p=>{
+        const c = document.createElement('div');
+        c.className='promo-card card';
+        c.innerHTML = `
+          <div style="flex:1">
+            <div style="font-weight:800">${p.title}</div>
+            <div class="text-muted" style="font-size:13px;margin-top:6px">${p.desc}</div>
+            <div style="margin-top:8px;font-size:13px" class="text-muted">Berlaku hingga: ${p.valid}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+            <div class="badge-round">${p.code}</div>
+            <div style="display:flex;gap:8px">
+              <button class="btn small copy-code" data-code="${p.code}">Salin</button>
+              <button class="btn ghost small use-code" data-code="${p.code}">Gunakan</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(c);
+      });
+      document.querySelectorAll('.copy-code').forEach(b=> b.addEventListener('click', e=>{
+        const code = e.currentTarget.dataset.code;
+        if (navigator.clipboard) navigator.clipboard.writeText(code).then(()=> alert('Kode ' + code + ' disalin.'));
+        else prompt('Salin kode voucher:', code);
+      }));
+      document.querySelectorAll('.use-code').forEach(b=> b.addEventListener('click', e=>{
+        const code = e.currentTarget.dataset.code;
+        // store selected voucher to localStorage and redirect to checkout/cart
+        localStorage.setItem('selectedVoucher', code);
+        alert('Voucher ' + code + ' disimpan. Lanjutkan ke checkout untuk memakai.');
+        window.location.href = 'cart.html';
+      }));
+    }
+    document.addEventListener('DOMContentLoaded', renderPromos);
+  </script>
+
+  <script src="scripts/header.js"></script>
+  <script src="scripts/cart.js"></script>
+</body>
+</html>

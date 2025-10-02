@@ -1,0 +1,76 @@
+.product-wrap{
+    display:flex; 
+    gap:22px; 
+    align-items:flex-start; 
+    margin-top:20px
+}
+
+.media{
+    flex:0 0 420px
+}
+
+.media img{
+    width:100%; 
+    border-radius:12px;
+}
+
+.info{
+    flex:1; 
+    background:var(--card); 
+    padding:18px; 
+    border-radius:12p
+}
+
+.info h1{
+    margin:0 0 8px
+}
+
+.price{
+    color:var(--accent); 
+    font-weight:700; 
+    font-size:20px
+}
+
+.qty{
+    display:flex; 
+    gap:8px; 
+    align-items:center; 
+    margin-top:12px
+}
+
+.qty input{
+    width:80px; 
+    padding:8px; 
+    border-radius:8px; 
+    border:1px solid rgba(15,23,42,0.06)
+}
+
+.buy-actions{
+    margin-top:14px; 
+    display:flex; 
+    gap:10px
+}
+
+.btn-primary{
+    background:var(--accent); 
+    color:#fff; 
+    padding:10px 14px; 
+    border-radius:10px; 
+    border:0
+}
+
+.btn-ghost{
+    background:transparent; 
+    border:1px solid rgba(15,23,42,0.08); 
+    padding:10px 14px; 
+    border-radius:10px
+}
+
+@media(max-width:880px){ 
+    .product-wrap{
+        flex-direction:column
+    } 
+    .media{
+        width:100%
+    } 
+}

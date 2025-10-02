@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login — MalibuShop</title>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/auth.css">
+  <link rel="stylesheet" href="styles/footer.css">
+<link rel="stylesheet" href="assets/css/ecommerce.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="container">
+    <div class="auth-wrap">
+      <h2>Masuk ke Akun</h2>
+      <div id="authMessage" class="auth-msg" style="display:none;"></div>
+      <form id="loginForm">
+        <div class="form-row">
+          <label>Username</label>
+          <input id="username" name="username" type="text" placeholder="Nama pengguna" />
+        </div>
+        <div class="form-row">
+          <label>Password</label>
+          <input id="password" name="password" type="password" placeholder="Kata sandi" />
+        </div>
+        <div class="form-row">
+          <button class="submit" type="submit">Login</button>
+        </div>
+      </form>
+      <p>Belum punya akun? <a href="signup.html">Daftar sekarang</a></p>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <div id="footer-placeholder">
+    <script src="scripts/header.js"></script>
+    <script src="scripts/cart.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "ecommerce-frontend-starter-phase1-v2",
+  "version": "1.0.0",
+  "description": "Starter front-end scaffold for e-commerce (static)",
+  "scripts": {
+    "start": "http-server ./public -p 8080"
+  },
+  "devDependencies": {}
+}

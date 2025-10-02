@@ -1,0 +1,32 @@
+.checkout-grid{
+    display:grid; 
+    grid-template-columns:1fr 360px; 
+    gap:18px
+}
+
+.order-summary{
+    background:var(--card); 
+    padding:12px; 
+    border-radius:12px
+}
+
+.form-row input, .form-row textarea, .form-row select{
+    width:100%; 
+    padding:10px; 
+    border-radius:8px; 
+    border:1px solid rgba(15,23,42,0.06)
+}
+
+.place-btn{
+    background:var(--accent); 
+    color:#fff; 
+    padding:10px 12px; 
+    border-radius:10px; 
+    border:0
+}
+
+@media(max-width:900px){ 
+    .checkout-grid{
+        grid-template-columns:1fr
+    } 
+}

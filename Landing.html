@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Landing — MalibuShop</title>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <style>
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+      display: flex; flex-direction: column; min-height: 100vh;
+    }
+    .landing {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 40px;
+      background: linear-gradient(120deg,#f8f8f8,#ececec);
+    }
+    h1 { font-size: 2.2em; margin-bottom: 20px; }
+    p { font-size: 1.1em; margin-bottom: 30px; }
+    .btn-group { display: flex; gap: 16px; }
+    .btn {
+      padding: 12px 24px; border: none; border-radius: 6px;
+      font-size: 1em; cursor: pointer; transition: 0.3s;
+    }
+    .btn-primary { background: #0077cc; color: white; }
+    .btn-primary:hover { background: #005fa3; }
+    .btn-secondary { background: #eee; }
+    .btn-secondary:hover { background: #ddd; }
+  </style>
+<link rel="stylesheet" href="assets/css/ecommerce.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  
+  <div class="landing">
+    <h1>Welcome To </h1>
+    <p>Belanja produk favoritmu dengan mudah, aman, dan cepat.</p>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="window.location.href='login.html'">Login</button>
+      <button class="btn btn-secondary" onclick="window.location.href='signup.html'">Sign Up</button>
+    </div>
+  </div>
+
+  
+  
+  <script>
+    // auto-redirect from landing to login after 3 seconds
+    setTimeout(function(){ window.location.href='login.html'; }, 3000);
+  </script>
+
+  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
+  <script src="scripts/cart.js"></script>
+</div>
+</body>
+</html>

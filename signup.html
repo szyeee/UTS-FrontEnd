@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign Up — MalibuShop</title>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/auth.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <style>
+    .validation-msg { color: red; font-size: 0.9em; margin-bottom: 8px; }
+    .form-row { position: relative; }
+    .show-hide-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 0.9em; }
+    .center-btn { display: flex; justify-content: center; }
+    .forgot-btn-wrap { display: flex; justify-content: center; margin-top: 12px; }
+    .forgot-text {
+      background: none;
+      border: none;
+      color: #555;
+      opacity: 0.6;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+    .forgot-text:focus { outline: none; }
+  </style>
+<link rel="stylesheet" href="assets/css/ecommerce.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  
+  <div class="container">
+    <div class="auth-wrap">
+      <h2>Sign Up</h2>
+      <div id="validation-msg" class="validation-msg"></div>
+      <div class="form-row"><input id="fullname" placeholder="Nama Lengkap"></div>
+      <div class="form-row"><input id="username" placeholder="Username"></div>
+      <div class="form-row"><input id="phone" placeholder="Nomor Telepon" type="tel"></div>
+      <div class="form-row"><input id="email" placeholder="Email" type="email"></div>
+      <div class="form-row">
+        <input id="password" placeholder="Password" type="password">
+        <button class="show-hide-btn" type="button" id="toggle-password">Show</button>
+      </div>
+      <div class="form-row">
+        <input id="confirm-password" placeholder="Konfirmasi Password" type="password">
+        <button class="show-hide-btn" type="button" id="toggle-confirm">Show</button>
+      </div>
+      <div class="center-btn">
+        <button class="submit" id="signup-btn">Sign Up</button>
+      </div>
+      <div class="forgot-btn-wrap">
+        <button type="button" class="forgot-text" onclick="alert('Fitur lupa password belum tersedia')">Forgot Password</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
+  <script src="scripts/cart.js"></script>
+</div>
+</body>
+</html>

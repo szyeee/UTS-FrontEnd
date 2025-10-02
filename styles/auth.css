@@ -1,0 +1,31 @@
+.auth-wrap{
+    max-width:520px; 
+    margin:28px auto; 
+    background:var(--card); 
+    padding:18px; 
+    border-radius:12px
+}
+
+.auth-wrap h2{
+    margin-top:0
+}
+
+.form-row{
+    margin-bottom:12px
+}
+
+.form-row input{
+    width:100%; 
+    padding:10px; 
+    border-radius:8px; 
+    border:1px solid rgba(15,23,42,0.06)
+}
+
+.submit{
+    background:var(--accent); 
+    color:#fff; 
+    padding:10px 14px; 
+    border-radius:10px; 
+    border:0; 
+    cursor:pointer
+}

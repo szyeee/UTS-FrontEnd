@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MalibuShop — Home</title>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/footer.css">
+<link rel="stylesheet" href="assets/css/ecommerce.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  
+  <div class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Promo Spesial Minggu Ini</h1>
+        <p>Diskon sampai 50% untuk pilihan buket. Gratis ongkir untuk kota tertentu.</p>
+        <a href="products.html" class="hero-cta">Belanja Sekarang</a>
+      </div>
+      <div class="hero-right">
+        <img src="assets/img/hero.jpg" alt="hero">
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Produk Unggulan</h2>
+      <div class="grid products-grid" id="featured"></div>
+    </section>
+  </div>
+  
+<!-- Promo floating carousel modal (compact) -->
+<div class="promo-modal" id="promoModal" aria-hidden="true" style="display:none;">
+  <div class="promo-header">
+    <h4>Promo Untukmu</h4>
+    <div>
+      <button class="promo-close" id="promoClose" title="Tutup">✕</button>
+    </div>
+  </div>
+  <div class="promo-body">
+    <div class="promo-carousel">
+      <div class="promo-track" id="promoTrack">
+        <div class="promo-item">
+          <img src="assets/img/p1.jpg" alt="Promo 1">
+          <div class="info"><h5>Diskon 20% Buket Mawar</h5><p>Gunakan kode MAWAR20. Berlaku sampai 30 Sep.</p></div>
+        </div>
+        <div class="promo-item">
+          <img src="assets/img/p2.jpg" alt="Promo 2">
+          <div class="info"><h5>Gratis Ongkir</h5><p>Gratis ongkir untuk pembelian di atas Rp150.000.</p></div>
+        </div>
+        <div class="promo-item">
+          <img src="assets/img/p3.jpg" alt="Promo 3">
+          <div class="info"><h5>Buy 1 Get 1</h5><p>Beli 1 Buket, dapat 1 lagi pilihan kecil.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="promo-nav" style="margin-top:10px;">
+      <button class="promo-btn" id="promoPrev">◀</button>
+      <button class="promo-btn" id="promoNext">▶</button>
+    </div>
+  </div>
+</div>
+
+  
+  
+  
+  <script src="scripts/products.js"></script>
+  <script>
+    // render featured using PRODUCTS from products.js (fallback to sample if absent)
+    var sample = [
+      {id:1,title:'Buket Mawar',price:125000,img:'assets/img/p1.jpg'},
+      {id:2,title:'Buket Lily',price:150000,img:'assets/img/p2.jpg'},
+      {id:3,title:'Buket Campuran',price:175000,img:'assets/img/p3.jpg'},
+      {id:4,title:'Buket Rose Deluxe',price:225000,img:'assets/img/p4.jpg'}
+    ];
+    function renderFeatured(){ 
+      var arr = (typeof PRODUCTS !== 'undefined') ? PRODUCTS : sample;
+      var el = document.getElementById('featured'); el.innerHTML='';
+      arr.forEach(function(p){
+        var card = document.createElement('div'); card.className='product-card';
+        card.innerHTML = '<div class="product-media"><img src="'+p.img+'" alt="'+p.title+'"></div><div class="product-body"><h3 class="product-title">'+p.title+'</h3><p class="product-desc">'+(p.desc||'')+'</p><div class="product-meta"><span class="price">Rp '+p.price.toLocaleString('id-ID')+'</span><div class="actions"><button class="add-cart" data-id="'+p.id+'">Tambah ke Keranjang</button><a class="view-link" href="product-details.html?id='+p.id+'">Lihat</a></div></div></div>';
+        el.appendChild(card);
+        // attach add to cart handler
+        card.querySelector('.add-cart').addEventListener('click', function(){ addToCart(p,1); });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', renderFeatured);
+  </script>
+  <script>
+  // Jika user belum login, dan buka index langsung, redirect ke landing
+  if (!localStorage.getItem('isLoggedIn')) {
+    if (!window.location.pathname.includes('landing.html') &&
+        !window.location.pathname.includes('login.html') &&
+        !window.location.pathname.includes('signup.html')) {
+      window.location.href = 'Landing.html';
+    }
+  }
+</script>
+  <script src="scripts/promo.js"></script>
+
+  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
+  <script src="scripts/cart.js"></script>
+</div>
+</body>
+</html>
