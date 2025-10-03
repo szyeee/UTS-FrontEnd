@@ -1,4 +1,4 @@
-// checkout.js - updated to match merged HTML structure
+// checkout.js - updated to match merged HTML
 function formatRupiah(v){
   return 'Rp ' + Number(v).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
