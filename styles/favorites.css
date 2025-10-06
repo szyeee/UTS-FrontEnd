@@ -1,10 +1,49 @@
-/* favorites.css - basic styles */
-body{
-    font-family:Arial,Helvetica,sans-serif
+/* favorites.css */
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.container{
-    max-width:1100px;
-    margin:0 auto;
-    padding:16px
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Samakan gaya tombol dengan products.css */
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.actions .btn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.25s ease;
+}
+
+/* tombol tambah keranjang */
+.actions .btn.add-cart {
+  background: #0b6623;
+  color: #fff;
+}
+
+.actions .btn.add-cart:hover {
+  opacity: 0.92;
+}
+
+/* tombol hapus favorit – samakan style tapi beda warna outline */
+.actions .btn.remove-fav {
+  background: transparent;
+  color: #0b6623;
+  border: 1px solid rgba(11, 102, 35, 0.12);
+  padding: 8px 10px;
+}
+
+.actions .btn.remove-fav:hover {
+  background: rgba(11, 102, 35, 0.06);
 }
