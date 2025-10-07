@@ -1,19 +1,103 @@
-<!doctype html><html lang='id'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Help</title>
-<link rel='stylesheet' href='styles/header.css'><link rel='stylesheet' href='styles/index.css'><link rel='stylesheet' href='styles/footer.css'><link rel="stylesheet" href="assets/css/ecommerce.css">
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Help</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="stylesheet" href="styles/help.css">
+  <link rel="stylesheet" href="assets/css/ecommerce.css">
 </head>
 <body>
+  <!-- Header -->
   <div id="header-placeholder"></div>
 
-  
+  <!-- Main Container -->
+  <div class="container">
+    <h1>Help & Contact Us</h1>
+    <p>Temukan jawaban di FAQ atau hubungi kami melalui form di bawah ini.</p>
 
-<div class='container'><h1>Help</h1><p>Halaman contoh untuk help. Silakan lengkapi sesuai spesifikasi.</p></div>
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>FAQ</h2>
+      <input type="text" id="faq-search" placeholder="Cari di FAQ...">
+      <button id="btn-search-faq">Search FAQ</button>
+      <div id="faq-list" class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Bagaimana cara melakukan pemesanan?</button>
+          <div class="faq-answer">Anda dapat melakukan pemesanan melalui keranjang belanja dan mengikuti instruksi checkout.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Berapa lama waktu pengiriman?</button>
+          <div class="faq-answer">Waktu pengiriman rata-rata 2-5 hari kerja tergantung lokasi Anda.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Bagaimana cara mengembalikan barang?</button>
+          <div class="faq-answer">Anda dapat mengajukan pengembalian barang melalui menu Akun & Pesanan.</div>
+        </div>
+         <div class="faq-item">
+          <button class="faq-question">Metode pembayaran apa saja yang tersedia?</button>
+          <div class="faq-answer">Kami menerima pembayaran melalui transfer bank, e-wallet, dan COD untuk area tertentu.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Bagaimana cara menggunakan voucher atau promo?</button>
+          <div class="faq-answer">Masukkan kode voucher di halaman checkout sebelum pembayaran. Potongan harga akan otomatis dihitung.</div>
+        </div>
+         <div class="faq-item">
+          <button class="faq-question">Apakah bisa mengubah atau membatalkan pesanan setelah checkout?</button>
+          <div class="faq-answer">Bisa, selama pesanan belum dikirim. Silahkan hubungi Customer Support dengan menyertakan nomor order.</div>
+        </div>
+         <div class="faq-item">
+          <button class="faq-question">Bagaimana jika saya menerima barang rusak atau salah?</button>
+          <div class="faq-answer">Foto barang dan hubungi Customer Support maksimal 3x24 jam setelah menerima. Kami akan membantu retur atau penggantian produk.</div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Contact Form -->
+    <section class="contact-section">
+      <h2>Contact Form</h2>
+      <form id="contact-form">
+        <label for="name">Nama</label>
+        <input type="text" id="name" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+        
+        <label for="message">Pesan</label>
+        <textarea id="message" rows="4" required></textarea>
+        
+        <button type="submit" id="btn-submit">Submit Contact Form</button>
+      </form>
+    </section>
 
+    <!-- Support Channels -->
+    <section class="support-section">
+      <h2>Customer Support</h2>
+      <button id="btn-call">Call Support</button>
+    </section>
 
+    <!-- Policy Links -->
+    <section class="policy-section">
+      <h2>Kebijakan</h2>
+      <a href="docs/policy.pdf" download id="btn-policy">Download Policy</a>
+    </section>
+  </div>
 
-  
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
 
-  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
+  <!-- Scripts -->
+  <script src="scripts/header.js"></script>
+  <script src="scripts/help.js"></script>
   <script src="scripts/cart.js"></script>
-</div>
-</body></html>
+  <script>
+    // Inject header & footer
+    fetch('header.html').then(r => r.text()).then(t => document.getElementById('header-placeholder').innerHTML = t);
+    fetch('footer.html').then(r => r.text()).then(t => document.getElementById('footer-placeholder').innerHTML = t);
+  </script>
+</body>
+</html>
