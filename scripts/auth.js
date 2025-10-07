@@ -1,4 +1,3 @@
-
 // auth.js - simple login/signup handlers (client-side demo)
 document.addEventListener('DOMContentLoaded', function(){
   const loginForm = document.getElementById('loginForm');
