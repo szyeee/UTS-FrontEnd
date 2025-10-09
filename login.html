@@ -1,72 +1,43 @@
-  ...
-  <script src="scripts/header.js" defer></script>
-  <script src="scripts/cart.js" defer></script>
-  <!-- Hapus duplikasi auth.js; pakai satu include dengan defer -->
-  <script src="scripts/auth.js" defer></script>
-
-  <!-- Handler login: tambahkan ini jika belum ada di scripts/auth.js -->
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('loginForm');
-    const authMessage = document.getElementById('authMessage');
-
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // <-- "command" utama: cegah submit default
-
-      // ambil nilai
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value;
-
-      // validasi sederhana
-      if (!username || !password) {
-        authMessage.style.display = 'block';
-        authMessage.textContent = 'Isi semua field terlebih dahulu.';
-        return;
-      }
-
-      // tampilkan loading / disable tombol (opsional)
-      const submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Memproses...';
-      }
-
-      try {
-        // contoh request ke backend (ubah URL sesuai API-mu)
-        const res = await fetch('/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password }),
-        });
-
-        if (res.ok) {
-          // sukses — contoh redirect ke dashboard
-          authMessage.style.display = 'block';
-          authMessage.textContent = 'Login berhasil — mengalihkan...';
-          // tunggu singkat supaya user lihat pesan, lalu redirect
-          setTimeout(() => { window.location.href = '/dashboard.html'; }, 600);
-        } else {
-          // ambil pesan error dari backend (jika ada)
-          let data;
-          try { data = await res.json(); } catch { data = null; }
-          authMessage.style.display = 'block';
-          authMessage.textContent = (data && data.message) ? data.message : 'Login gagal. Periksa username/password.';
-        }
-      } catch (err) {
-        console.error(err);
-        authMessage.style.display = 'block';
-        authMessage.textContent = 'Terjadi kesalahan koneksi. Silakan coba lagi.';
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Login';
-        }
-      }
-    });
-  });
-  </script>
-
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login — MalibuShop</title>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/auth.css">
+  <link rel="stylesheet" href="styles/footer.css">
+<link rel="stylesheet" href="assets/css/ecommerce.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container">
+    <div class="auth-wrap">
+      <h2>Masuk ke Akun</h2>
+      <div id="authMessage" class="auth-msg" style="display:none;"></div>
+      
+      <!-- Form Login -->
+      <form id="loginForm">
+        <div class="form-row">
+          <label>Username</label>
+          <input id="username" name="username" type="text" placeholder="Nama pengguna" />
+        </div>
+        <div class="form-row">
+          <label>Password</label>
+          <input id="password" name="password" type="password" placeholder="Kata sandi" />
+        </div>
+        <div class="form-row">
+          <button class="submit" type="submit">Login</button>
+        </div>
+      </form>
+      <p>Belum punya akun? <a href="signup.html">Daftar sekarang</a></p>
+    </div>
+  </div>
+  <script src="scripts/auth.js"></script>
+   <div id="footer-placeholder">
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/cart.js" defer></script>
+    <script src="scripts/auth.js" defer></script>
+  </div>
 </body>
 </html>
