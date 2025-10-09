@@ -28,39 +28,47 @@
 <link rel="stylesheet" href="assets/css/ecommerce.css">
 </head>
 <body>
-  <div id="header-placeholder"></div>
-
-  
+  <div id="header-placeholder"></div>  
   <div class="container">
-    <div class="auth-wrap">
-      <h2>Sign Up</h2>
-      <div id="validation-msg" class="validation-msg"></div>
-      <div class="form-row"><input id="fullname" placeholder="Nama Lengkap"></div>
-      <div class="form-row"><input id="username" placeholder="Username"></div>
-      <div class="form-row"><input id="phone" placeholder="Nomor Telepon" type="tel"></div>
-      <div class="form-row"><input id="email" placeholder="Email" type="email"></div>
-      <div class="form-row">
-        <input id="password" placeholder="Password" type="password">
-        <button class="show-hide-btn" type="button" id="toggle-password">Show</button>
-      </div>
-      <div class="form-row">
-        <input id="confirm-password" placeholder="Konfirmasi Password" type="password">
-        <button class="show-hide-btn" type="button" id="toggle-confirm">Show</button>
-      </div>
-      <div class="center-btn">
-        <button class="submit" id="signup-btn">Sign Up</button>
-      </div>
-      <div class="forgot-btn-wrap">
-        <button type="button" class="forgot-text" onclick="alert('Fitur lupa password belum tersedia')">Forgot Password</button>
-      </div>
-    </div>
-  </div>
-  
-  
-  
+<div class="auth-wrap">
+  <h2>Sign Up</h2>
+  <div id="validation-msg" class="validation-msg"></div>
 
-  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
-  <script src="scripts/cart.js"></script>
+  <!-- Mulai FORM (id sesuai auth.js) -->
+  <form id="signupForm" novalidate>
+    <div class="form-row"><input id="fullname" name="fullname" placeholder="Nama Lengkap"></div>
+    <div class="form-row"><input id="username" name="username" placeholder="Username"></div>
+    <div class="form-row"><input id="phone" name="phone" placeholder="Nomor Telepon" type="tel"></div>
+    <div class="form-row"><input id="email" name="email" placeholder="Email" type="email"></div>
+
+    <div class="form-row">
+      <input id="password" name="password" placeholder="Password" type="password">
+      <button class="show-hide-btn" type="button" id="toggle-password">Show</button>
+    </div>
+
+    <!-- ubah id confirm agar cocok dengan auth.js (confirmPassword) -->
+    <div class="form-row">
+      <input id="confirmPassword" name="confirmPassword" placeholder="Konfirmasi Password" type="password">
+      <button class="show-hide-btn" type="button" id="toggle-confirm">Show</button>
+    </div>
+
+    <div class="center-btn">
+      <!-- pastikan type submit sehingga form submit memicu handler -->
+      <button class="submit" id="signup-btn" type="submit">Sign Up</button>
+    </div>
+  </form>
+
+  <div class="forgot-btn-wrap">
+    <button type="button" class="forgot-text" onclick="alert('Fitur lupa password belum tersedia')">Forgot Password</button>
+  </div>
 </div>
+
+  </div>
+  <div id="footer-placeholder">
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/cart.js" defer></script>
+    <script src="scripts/auth.js" defer></script>
+  </div>
 </body>
 </html>
+
