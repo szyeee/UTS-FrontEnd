@@ -8,7 +8,9 @@ function addToCart(product, qty=1){
   const existing = cart.find(x=>x.id===product.id);
   if(existing){ existing.qty = (existing.qty||1) + qty; } else { cart.push(Object.assign({}, product, {qty: qty})); }
   saveCart(cart);
-  try{ alert(product.title + ' ditambahkan ke keranjang.'); } catch(e){}
+  try {
+    alert('Produk berhasil ditambahkan.');
+  } catch(e){}
 }
 
 function updateCartBadge(){
