@@ -1,50 +1,122 @@
-<!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checkout — MalibuShop</title><link rel="stylesheet" href="assets/css/ecommerce.css"></head><body>
-<div id="header-placeholder"></div>
-<div class="container" style="padding-top:18px">
-  <h1>Checkout</h1>
-  <div class="card" style="padding:12px;">
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <button class="btn" id="continue-payment">Continue to Payment</button>
-      <div style="flex:1;min-width:260px">
-        <input id="voucher-input" placeholder="Apply Voucher" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><button class="btn small" id="apply-voucher">Apply Voucher</button>
-      </div>
-      <button class="btn secondary" id="edit-address">Edit Address</button>
-    </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - MalibuShop</title>
+  <link rel="stylesheet" href="assets/css/ecommerce.css">
+  <style>
+    body {background:#f3f4f6;}
+    .checkout-container {
+      display:flex; gap:20px;
+      max-width:1200px; margin:20px auto; padding:0 20px;
+    }
+    .checkout-left {flex:2; display:flex; flex-direction:column; gap:20px;}
+    .checkout-right {flex:1;}
+    .card {background:#fff; border-radius:10px; padding:16px; box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+    .card h2 {font-size:1.1em; margin-bottom:12px; color:#1e3a8a;}
+    .checkout-item {display:flex; gap:12px; align-items:center;}
+    .checkout-item img {width:70px; height:70px; object-fit:cover; border-radius:8px; border:1px solid #e5e7eb;}
+    .summary-card {position:sticky; top:80px;}
+    .summary-prices {margin:16px 0;}
+    .summary-prices p {display:flex; justify-content:space-between; margin:6px 0;}
+    .summary-prices hr {border:none; border-top:1px solid #e5e7eb; margin:10px 0;}
+    .summary-prices .total {font-size:1.1em; font-weight:bold; color:#1e40af;}
+    .btn {background:#2563eb; color:#fff; padding:10px 16px; border:none; border-radius:8px; cursor:pointer; font-weight:600;}
+    .btn:hover {background:#1e3a8a;}
+    .btn.secondary {background:#e5e7eb; color:#374151;}
+    .modal {display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;}
+    .modal-body {background:#fff; padding:20px; border-radius:10px; width:90%; max-width:420px;}
+  </style>
+</head>
+<body>
+  <!-- Header dynamic -->
+  <div id="header-placeholder"></div>
 
-    <div style="margin-top:12px;display:grid;grid-template-columns:1fr 300px;gap:12px">
-      <div>
-        <div class="card" style="padding:12px" id="shipping-options-card"><strong>Choose Shipping</strong><div id="shipping-options" style="margin-top:8px"></div></div>
-        <div class="card" style="padding:12px;margin-top:8px" id="payment-options-card"><strong>Select Payment Method</strong><div id="payment-options" style="margin-top:8px"></div></div>
+  <main class="checkout-container">
+    <!-- KIRI -->
+    <section class="checkout-left">
+      <div class="card">
+        <h2>Alamat Pengiriman</h2>
+        <p id="addr-name">Budi Santoso</p>
+        <p id="addr-phone">0812-3456-7890</p>
+        <p id="addr-line">Jl. Swasembada Barat XV No.23, Jakarta</p>
+        <button id="edit-address" class="btn secondary">Ubah</button>
       </div>
-      <div class="card" style="padding:12px">
-        <h3>Order Summary</h3>
-        <div id="order-lines"></div>
-        <div class="flex justify-between"><div>Subtotal</div><div id="sum-subtotal">Rp 0</div></div>
-        <div class="flex justify-between"><div>Ongkir</div><div id="sum-shipping">Rp 0</div></div>
-        <div class="flex justify-between"><div>Diskon</div><div id="sum-discount">Rp 0</div></div>
-        <hr>
-        <div class="flex justify-between"><div style="font-weight:800">Total</div><div id="sum-total">Rp 0</div></div>
-        <div style="margin-top:12px;display:flex;gap:8px">
-          <button class="btn" id="place-order">Place Order</button>
-          <button class="btn secondary" id="cancel-order">Cancel</button>
+
+      <div class="card">
+        <h2>Produk Dipesan</h2>
+        <div id="order-lines">
+          <div class="checkout-item">
+            <img src="https://via.placeholder.com/70" alt="Produk">
+            <div>
+              <h3>Sneakers Sport Edition</h3>
+              <p>Rp119.000</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- KANAN -->
+    <aside class="checkout-right">
+      <div class="card summary-card">
+        <h2>Ringkasan Pesanan</h2>
+
+        <div id="shipping-options-card" style="margin-bottom:12px">
+          <strong>Pengiriman</strong>
+          <div id="shipping-options" style="margin-top:8px"></div>
+        </div>
+
+        <div id="payment-options-card" style="margin-bottom:12px">
+          <strong>Metode Pembayaran</strong>
+          <div id="payment-options" style="margin-top:8px"></div>
+        </div>
+
+        <div class="form-row">
+          <label for="voucher">Voucher</label>
+          <div style="display:flex;gap:8px">
+            <input type="text" id="voucher-input" placeholder="Masukkan kode voucher" style="flex:1;padding:8px;border-radius:8px;border:1px solid #e5e7eb">
+            <button class="btn small" id="apply-voucher">Gunakan</button>
+          </div>
+          <small id="voucher-msg"></small>
+        </div>
+
+        <div class="summary-prices">
+          <p>Subtotal Produk: <span id="sum-subtotal">Rp 119.000</span></p>
+          <p>Ongkir: <span id="sum-shipping">Rp 15.000</span></p>
+          <p>Diskon: <span id="sum-discount">Rp 0</span></p>
+          <hr>
+          <p class="total">Total: <span id="sum-total">Rp 134.000</span></p>
+        </div>
+
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="place-order">Bayar Sekarang</button>
+          <button class="btn secondary" id="cancel-order">Batal</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Modal Edit Alamat -->
+  <div id="addr-modal" class="modal">
+    <div class="modal-body">
+      <h3>Edit Address</h3>
+      <input id="addr-name-input" placeholder="Nama penerima" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
+      <input id="addr-line-input" placeholder="Alamat lengkap" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
+      <input id="addr-phone-input" placeholder="No. HP" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn secondary" id="addr-cancel">Batal</button>
+        <button class="btn" id="addr-save">Simpan</button>
       </div>
     </div>
   </div>
-</div>
 
-<!-- address modal -->
-<div id="addr-modal" class="modal" style="display:none"><div class="modal-body">
-  <h3>Edit Address</h3>
-  <input id="addr-name" placeholder="Nama penerima" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
-  <input id="addr-line" placeholder="Alamat lengkap" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
-  <input id="addr-phone" placeholder="No. HP" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb"><br><br>
-  <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn secondary" id="addr-cancel">Cancel</button><button class="btn" id="addr-save">Save</button></div>
-</div></div>
+  <!-- Footer dynamic -->
+  <div id="footer-placeholder"></div>
 
-<div id="footer-placeholder"></div>
-<script src="scripts/header.js"></script>
-<script src="scripts/cart.js"></script>
-<script src="scripts/checkout.js"></script>
-</body></html>
+  <script src="scripts/header.js"></script>
+  <script src="scripts/cart.js"></script>
+  <script src="scripts/checkout.js"></script>
+</body>
+</html>

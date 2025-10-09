@@ -1,8 +1,19 @@
 <!doctype html>
 <html lang='id'>
-<head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>Kategori — MalibuShop</title>
-<link rel='stylesheet' href='styles/header.css'><link rel='stylesheet' href='styles/categories.css'><link rel='stylesheet' href='styles/footer.css'><link rel="stylesheet" href="assets/css/ecommerce.css">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>Kategori — MalibuShop</title>
+  <link rel='stylesheet' href='styles/header.css'>
+  <link rel='stylesheet' href='styles/categories.css'>
+  <link rel='stylesheet' href='styles/footer.css'>
+  <link rel="stylesheet" href="assets/css/ecommerce.css">
+  <style>
+    /* awalnya sembunyikan produk */
+    #products-grid {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -10,38 +21,62 @@
   <div class="container">
     <h1>Kategori Produk</h1>
     <p>Pilih kategori untuk melihat produk terkait.</p>
-    <div class="categories-grid" id="categoriesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:18px;">
+
+    <div class="categories-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:18px;">
       <div class="category-card">
         <img src="assets/img/p1.jpg" alt="Buket" style="width:100%;height:140px;object-fit:cover;border-radius:8px;">
         <h3>Buket & Rangkaian</h3>
         <p>Beragam buket untuk momen spesial.</p>
-        <a class="btn" href="products.html">Lihat Produk</a>
+        <button class="btn category-btn" data-cat="Buket">Lihat Produk</button>
       </div>
       <div class="category-card">
         <img src="assets/img/p2.jpg" alt="Tanaman" style="width:100%;height:140px;object-fit:cover;border-radius:8px;">
         <h3>Tanaman Hias</h3>
         <p>Tanaman indoor dan outdoor pilihan.</p>
-        <a class="btn" href="products.html">Lihat Produk</a>
+        <button class="btn category-btn" data-cat="Tanaman Hias">Lihat Produk</button>
       </div>
       <div class="category-card">
         <img src="assets/img/p3.jpg" alt="Parcel" style="width:100%;height:140px;object-fit:cover;border-radius:8px;">
         <h3>Parcel & Kado</h3>
         <p>Hadiah siap kirim untuk berbagai acara.</p>
-        <a class="btn" href="products.html">Lihat Produk</a>
+        <button class="btn category-btn" data-cat="Parcel & Kado">Lihat Produk</button>
       </div>
       <div class="category-card">
         <img src="assets/img/p4.jpg" alt="Aksesori" style="width:100%;height:140px;object-fit:cover;border-radius:8px;">
         <h3>Aksesoris</h3>
         <p>Vas, pita, dan pelengkap lainnya.</p>
-        <a class="btn" href="products.html">Lihat Produk</a>
+        <button class="btn category-btn" data-cat="Aksesoris">Lihat Produk</button>
       </div>
     </div>
+
+    <!-- Tempat produk muncul -->
+    <div id="products-grid" class="products-grid small" style="margin-top:22px;"></div>
   </div>
 
   <script src="scripts/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      // Event click untuk tombol kategori
+      document.querySelectorAll('.category-btn').forEach(btn=>{
+        btn.addEventListener('click', function(){
+          const cat = this.dataset.cat;
+
+          // render produk sesuai kategori
+          renderProducts(cat, '', {compact:true});
+
+          // tampilkan grid produk
+          document.getElementById('products-grid').style.display = 'grid';
+
+          // ubah judul jadi nama kategori
+          document.querySelector('h1').textContent = cat;
+        });
+      });
+    });
+  </script>
 
   <div id="footer-placeholder">
     <script src="scripts/header.js"></script>
     <script src="scripts/cart.js"></script>
   </div>
-</body></html>
+</body>
+</html>
