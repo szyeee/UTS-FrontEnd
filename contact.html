@@ -1,19 +1,119 @@
-<!doctype html><html lang='id'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Contact</title>
-<link rel='stylesheet' href='styles/header.css'><link rel='stylesheet' href='styles/index.css'><link rel='stylesheet' href='styles/footer.css'><link rel="stylesheet" href="assets/css/ecommerce.css">
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hubungi Kami — MalibuShop</title>
+
+  <!-- pakai CSS global project -->
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="assets/css/ecommerce.css">
+  <link rel="stylesheet" href="styles/footer.css">
+
+  <!-- file style spesifik contact -->
+  <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
+  <!-- header akan di-inject oleh header.js -->
   <div id="header-placeholder"></div>
 
-  
+  <main class="container" style="padding-top:18px;">
+    <section class="contact-hero">
+      <div class="contact-intro">
+        <h1 class="page-title">Hubungi Kami</h1>
+        <p class="muted">Ada pertanyaan tentang produk, pesanan, atau kerja sama? Isi formulir di sebelah kanan, tim kami akan membalas secepatnya.</p>
+      </div>
+    </section>
 
-<div class='container'><h1>Contact</h1><p>Halaman contoh untuk contact. Silakan lengkapi sesuai spesifikasi.</p></div>
+    <section class="contact-grid" aria-labelledby="contact-heading">
+      <div class="card contact-form-card" role="region" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" class="card-title">Kirim Pesan</h2>
 
+        <div id="contact-notify" class="notify notify-success" role="status" aria-live="polite" style="display:none"></div>
+        <div id="contact-error" class="notify notify-error" role="alert" aria-live="assertive" style="display:none"></div>
 
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="row">
+            <label for="cname">Nama Lengkap <span class="req">*</span></label>
+            <input id="cname" name="name" type="text" placeholder="Nama lengkap" required>
+          </div>
 
+          <div class="row split">
+            <div>
+              <label for="cemail">Email <span class="req">*</span></label>
+              <input id="cemail" name="email" type="email" placeholder="email@domain.com" required>
+            </div>
+            <div>
+              <label for="cphone">Telepon</label>
+              <input id="cphone" name="phone" type="tel" placeholder="0812xxxxxxx">
+            </div>
+          </div>
 
-  
+          <div class="row">
+            <label for="csubject">Topik</label>
+            <select id="csubject" name="subject">
+              <option value="">— Pilih topik —</option>
+              <option value="order">Status Pesanan</option>
+              <option value="product">Pertanyaan Produk</option>
+              <option value="collab">Kerjasama</option>
+              <option value="other">Lainnya</option>
+            </select>
+          </div>
 
-  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
+          <div class="row">
+            <label for="cmessage">Pesan <span class="req">*</span></label>
+            <textarea id="cmessage" name="message" rows="6" placeholder="Tulis pesan Anda..." required></textarea>
+          </div>
+
+          <div class="row actions">
+            <button type="submit" class="btn primary" id="contact-send">Kirim Pesan</button>
+            <button type="button" class="btn ghost" id="contact-clear">Bersihkan</button>
+            <div class="muted small" style="margin-left:auto">Biasanya dibalas dalam 1×24 jam</div>
+          </div>
+        </form>
+      </div>
+
+      <aside class="card contact-info-card" aria-label="Informasi Kontak">
+        <h3 class="card-title">Informasi Toko</h3>
+
+        <div class="info-row">
+          <strong>Alamat</strong>
+          <div class="muted">Jl. Mawar No.12, Jakarta</div>
+        </div>
+
+        <div class="info-row">
+          <strong>Telepon</strong>
+          <div class="muted">(+62) 812-3456-7890</div>
+        </div>
+
+        <div class="info-row">
+          <strong>Email</strong>
+          <div class="muted">support@malibushop.example</div>
+        </div>
+
+        <div class="info-row">
+          <strong>Jam</strong>
+          <div class="muted">Senin–Sabtu 08:00–17:00</div>
+        </div>
+
+        <div class="map-wrap" aria-hidden="false">
+          <!-- fallback: jika ingin gambar statis ganti src -->
+          <iframe
+            src="https://www.google.com/maps?q=Jl.+Mawar+No+12+Jakarta&output=embed"
+            width="100%" height="220" frameborder="0" style="border:0;border-radius:8px" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- scripts: header must load BEFORE contact.js so header placeholder exists -->
+  <script src="scripts/header.js"></script>
   <script src="scripts/cart.js"></script>
-</div>
-</body></html>
+  <script src="scripts/footer.js"></script>
+  <script src="scripts/contact.js"></script>
+</body>
+</html>
