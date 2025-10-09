@@ -21,29 +21,39 @@
 
   <div id="footer-placeholder"></div>
 
-
 <!-- Promonya -->
   <script>
     const PROMOS = [
-      {id:1,title:'Diskon Musiman 20%', code:'MUSIM20',desc:'Potongan 20% untuk semua buket (min pembelian Rp 100.000)',valid:'31 Des 2025'},
-      {id:2,title:'Voucher Gratis Ongkir', code:'ONGKIRFREE',desc:'Gratis ongkir untuk wilayah kota (min pembelian Rp 50.000)',valid:'30 Sep 2025'},
-      {id:3,title:'Buy 2 Get 1', code:'B2G1',desc:'Beli 2 produk tertentu, dapat 1 gratis (terbatas)',valid:'30 Nov 2025'},
-      {id:4,title:'Diskon Pelanggan Baru', code:'HELLO10',desc:'Diskon 10% untuk pembeli pertama',valid:'31 Des 2025'}
+      {id:1, title:'Diskon Musiman 20%', code:'MUSIM20', desc:'Potongan 20% untuk semua buket (min pembelian Rp 100.000)', valid:'31 Des 2025'},
+      {id:2, title:'Voucher Gratis Ongkir', code:'ONGKIRFREE', desc:'Gratis ongkir untuk wilayah kota (min pembelian Rp 50.000)', valid:'31 Des 2025'},
+      {id:3, title:'Buy 2 Get 1', code:'B2G1', desc:'Beli 2 produk tertentu, dapat 1 gratis (terbatas)', valid:'30 Nov 2025'},
+      {id:4, title:'Diskon Pelanggan Baru', code:'HELLO10', desc:'Diskon 10% untuk pembeli pertama', valid:'31 Des 2025'},
+
+      // 4 voucher tambahan
+      {id:5, title:'Parcel Hemat 50K', code:'PARCEL50', desc:'Potongan Rp 50.000 untuk parcel minimal Rp 250.000', valid:'31 Jan 2026'},
+      {id:6, title:'Aksesoris 10% Off', code:'AKSES10', desc:'Diskon 10% untuk kategori Aksesoris', valid:'31 Des 2025'},
+      {id:7, title:'Loyalty 25%', code:'LOYAL25', desc:'Potongan 25% untuk pelanggan setia (minimum pembelian Rp 200.000)', valid:'28 Feb 2026'},
+      {id:8, title:'Flash Sale 15%', code:'FLASH15', desc:'Diskon 15% selama flash sale hari ini (stok terbatas)', valid:'15 Okt 2025'}
     ];
-    function renderPromos(){
+
+    function renderPromos() {
       const grid = document.getElementById('promo-grid');
       grid.innerHTML='';
       PROMOS.forEach(p=>{
         const c = document.createElement('div');
         c.className='promo-card card';
+        c.style.display = 'flex';
+        c.style.justifyContent = 'space-between';
+        c.style.alignItems = 'center';
+        c.style.padding = '12px';
         c.innerHTML = `
-          <div style="flex:1">
+          <div style="flex:1; padding-right:12px">
             <div style="font-weight:800">${p.title}</div>
             <div class="text-muted" style="font-size:13px;margin-top:6px">${p.desc}</div>
             <div style="margin-top:8px;font-size:13px" class="text-muted">Berlaku hingga: ${p.valid}</div>
           </div>
-          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-            <div class="badge-round">${p.code}</div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;min-width:120px">
+            <div class="badge-round" style="background:#f3f4f6;padding:8px 10px;border-radius:20px;font-weight:700">${p.code}</div>
             <div style="display:flex;gap:8px">
               <button class="btn small copy-code" data-code="${p.code}">Salin</button>
               <button class="btn ghost small use-code" data-code="${p.code}">Gunakan</button>
@@ -52,23 +62,40 @@
         `;
         grid.appendChild(c);
       });
+
       document.querySelectorAll('.copy-code').forEach(b=> b.addEventListener('click', e=>{
         const code = e.currentTarget.dataset.code;
-        if (navigator.clipboard) navigator.clipboard.writeText(code).then(()=> alert('Kode ' + code + ' disalin.'));
-        else prompt('Salin kode voucher:', code);
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(code).then(()=> {
+            alert('Kode ' + code + ' disalin.');
+          }).catch(()=> {
+            prompt('Salin kode voucher:', code);
+          });
+        } else {
+          prompt('Salin kode voucher:', code);
+        }
       }));
+
       document.querySelectorAll('.use-code').forEach(b=> b.addEventListener('click', e=>{
         const code = e.currentTarget.dataset.code;
+        
         // store selected voucher to localStorage and redirect to checkout/cart
-        localStorage.setItem('selectedVoucher', code);
-        alert('Voucher ' + code + ' disimpan. Lanjutkan ke checkout untuk memakai.');
-        window.location.href = 'cart.html';
+        try {
+          localStorage.setItem('selectedVoucher', code);
+          alert('Voucher ' + code + ' disimpan. Lanjutkan ke checkout untuk memakai.');
+          window.location.href = 'cart.html';
+        } catch(err) {
+          console.warn('Promo: gagal menyimpan voucher', err);
+          alert('Gagal menyimpan voucher. Silakan coba lagi.');
+        }
       }));
     }
+
     document.addEventListener('DOMContentLoaded', renderPromos);
   </script>
 
   <script src="scripts/header.js"></script>
   <script src="scripts/cart.js"></script>
+  <script src="scripts/footer.js"></script>
 </body>
 </html>

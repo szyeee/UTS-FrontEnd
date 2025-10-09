@@ -1,4 +1,14 @@
-/* auth.css - basic styles */
+/* auth.css (basic styles) */
+.auth-wrap {
+  position: relative !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+header, #header-placeholder > * {
+  z-index: 1000 !important;
+}
+
 .auth-wrap{
     max-width:520px; 
     margin:28px auto; 

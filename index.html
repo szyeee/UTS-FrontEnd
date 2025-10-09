@@ -68,44 +68,78 @@
 
   <script src="scripts/products.js"></script>
   <script>
-    // render featured using PRODUCTS from products.js (fallback to sample if absent)
+    
+  // render featured using PRODUCTS from products.js (fallback to sample if absent)
+  (function(){
     var sample = [
       {id:1,title:'Buket Mawar',price:125000,img:'assets/img/p1.jpg'},
       {id:2,title:'Buket Lily',price:150000,img:'assets/img/p2.jpg'},
       {id:3,title:'Buket Campuran',price:175000,img:'assets/img/p3.jpg'},
       {id:4,title:'Buket Rose Deluxe',price:225000,img:'assets/img/p4.jpg'}
     ];
-    function renderFeatured(){ 
+
+    function formatRupiah(v){
+      try { return 'Rp ' + Number(v).toLocaleString('id-ID'); }
+      catch(e){ return 'Rp ' + v; }
+    }
+
+    function renderFeatured(){
       var arr = (typeof PRODUCTS !== 'undefined') ? PRODUCTS : sample;
-      var el = document.getElementById('featured'); el.innerHTML='';
-      arr.forEach(function(p){
-        var card = document.createElement('div'); card.className='product-card';
-        card.innerHTML = '<div class="product-media"><img src="'+p.img+'" alt="'+p.title+'"></div><div class="product-body"><h3 class="product-title">'+p.title+'</h3><p class="product-desc">'+(p.desc||'')+'</p><div class="product-meta"><span class="price">Rp '+p.price.toLocaleString('id-ID')+'</span><div class="actions"><button class="add-cart" data-id="'+p.id+'">Tambah ke Keranjang</button><a class="view-link" href="product-details.html?id='+p.id+'">Lihat</a></div></div></div>';
+      var featured = arr.slice(0, 6);
+
+      var el = document.getElementById('featured');
+      if(!el) return;
+      el.innerHTML = '';
+
+      featured.forEach(function(p){
+        var card = document.createElement('div');
+        card.className = 'product-card';
+        var img = p.img || 'assets/img/placeholder.png';
+        var desc = p.desc || '';
+        var priceText = formatRupiah(p.price || 0);
+
+        card.innerHTML = ''
+          + '<div class="product-media"><img src="'+img+'" alt="'+(p.title||'Produk')+'"></div>'
+          + '<div class="product-body">'
+            + '<h3 class="product-title">'+(p.title||'Produk')+'</h3>'
+            + '<p class="product-desc">'+desc+'</p>'
+            + '<div class="product-meta">'
+              + '<span class="price">'+priceText+'</span>'
+              + '<div class="actions">'
+                + '<button class="add-cart" data-id="'+p.id+'">Tambah Keranjang</button>'
+                + '<a class="view-link" href="product-details.html?id='+p.id+'">Lihat</a>'
+              + '</div>'
+            + '</div>'
+          + '</div>';
+
         el.appendChild(card);
-        // attach add to cart handler
-        card.querySelector('.add-cart').addEventListener('click', function(){ addToCart(p,1); });
+
+        var btn = card.querySelector('.add-cart');
+        if (btn) {
+          btn.addEventListener('click', function(){
+            var prod = (typeof PRODUCTS !== 'undefined') ? PRODUCTS.find(function(x){ return Number(x.id) === Number(p.id); }) : p;
+            if (!prod) {
+              alert('Produk tidak ditemukan.');
+              return;
+            }
+            if (typeof addToCart === 'function') {
+              addToCart(prod, 1);
+            } else {
+              alert('Keranjang belum siap, silakan muat ulang halaman.');
+            }
+          });
+        }
       });
     }
-    document.addEventListener('DOMContentLoaded', renderFeatured);
-  </script>
-  <script>
-  // Jika user belum login, dan buka index langsung, redirect ke landing
-  if (!localStorage.getItem('isLoggedIn')) {
-    if (!window.location.pathname.includes('landing.html') &&
-        !window.location.pathname.includes('login.html') &&
-        !window.location.pathname.includes('signup.html')) {
-      window.location.href = 'Landing.html';
-    }
-  }
 
+    document.addEventListener('DOMContentLoaded', renderFeatured);
+  })();
 </script>
-  <script src="scripts/promo.js"></script>
-<<<<<<< HEAD
-=======
-  
-  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
-  <script src="scripts/cart.js"></script>
+<script src="scripts/header.js"></script>
+<script src="scripts/cart.js"></script>
+<script src="scripts/products.js"></script>
+<script src="scripts/promo.js"></script>
+<div id="footer-placeholder">  
 </div>
->>>>>>> 6810ec0cf266e301d16944ed4c820ccd43946129
 </body>
 </html>
