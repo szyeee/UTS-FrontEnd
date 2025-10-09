@@ -1,15 +1,3 @@
-/* debug / fix overlay: pastikan auth berada di atas header jika header menggunakan overlay */
-.auth-wrap {
-  position: relative !important;
-  z-index: 9999 !important;
-  pointer-events: auto !important;
-}
-
-/* jika header fixed menutupi, turunkan z-index header (jika hati-hati) */
-header, #header-placeholder > * {
-  z-index: 1000 !important;
-}
-
 .auth-wrap{
     max-width:520px; 
     margin:28px auto; 

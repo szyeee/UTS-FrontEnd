@@ -3,101 +3,102 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Help</title>
-  <!-- CSS Styles -->
+  <title>Bantuan — MalibuShop</title>
+
+  <!-- project global CSS -->
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/index.css">
-  <link rel="stylesheet" href="styles/footer.css">
-  <link rel="stylesheet" href="styles/help.css">
   <link rel="stylesheet" href="assets/css/ecommerce.css">
+  <link rel="stylesheet" href="styles/footer.css">
+
+  <!-- page-specific -->
+  <link rel="stylesheet" href="styles/help.css">
 </head>
 <body>
-  <!-- Header -->
+  <!-- header injected by header.js -->
   <div id="header-placeholder"></div>
 
-  <!-- Main Container -->
-  <div class="container">
-    <h1>Help & Contact Us</h1>
-    <p>Temukan jawaban di FAQ atau hubungi kami melalui form di bawah ini.</p>
+  <main class="container" style="padding-top:18px; padding-bottom:36px;">
+    <header class="page-head">
+      <h1 class="page-title">Pusat Bantuan</h1>
+      <p class="muted">Cari jawaban cepat di FAQ kami, atau hubungi tim support jika butuh bantuan lebih lanjut.</p>
+    </header>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-      <h2>FAQ</h2>
-      <input type="text" id="faq-search" placeholder="Cari di FAQ...">
-      <button id="btn-search-faq">Search FAQ</button>
-      <div id="faq-list" class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question">Bagaimana cara melakukan pemesanan?</button>
-          <div class="faq-answer">Anda dapat melakukan pemesanan melalui keranjang belanja dan mengikuti instruksi checkout.</div>
+    <div class="grid-help">
+      <!-- LEFT: FAQ + search -->
+      <section class="card faq-card" aria-labelledby="faq-title">
+        <div class="card-header">
+          <h2 id="faq-title">FAQ — Pertanyaan yang Sering Diajukan</h2>
+          <div class="faq-search-wrap">
+            <input id="faq-search" class="input" placeholder="Cari FAQ atau kata kunci..." aria-label="Cari FAQ">
+            <button id="faq-clear" class="btn ghost small">Clear</button>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">Berapa lama waktu pengiriman?</button>
-          <div class="faq-answer">Waktu pengiriman rata-rata 2-5 hari kerja tergantung lokasi Anda.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Bagaimana cara mengembalikan barang?</button>
-          <div class="faq-answer">Anda dapat mengajukan pengembalian barang melalui menu Akun & Pesanan.</div>
-        </div>
-         <div class="faq-item">
-          <button class="faq-question">Metode pembayaran apa saja yang tersedia?</button>
-          <div class="faq-answer">Kami menerima pembayaran melalui transfer bank, e-wallet, dan COD untuk area tertentu.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Bagaimana cara menggunakan voucher atau promo?</button>
-          <div class="faq-answer">Masukkan kode voucher di halaman checkout sebelum pembayaran. Potongan harga akan otomatis dihitung.</div>
-        </div>
-         <div class="faq-item">
-          <button class="faq-question">Apakah bisa mengubah atau membatalkan pesanan setelah checkout?</button>
-          <div class="faq-answer">Bisa, selama pesanan belum dikirim. Silahkan hubungi Customer Support dengan menyertakan nomor order.</div>
-        </div>
-         <div class="faq-item">
-          <button class="faq-question">Bagaimana jika saya menerima barang rusak atau salah?</button>
-          <div class="faq-answer">Foto barang dan hubungi Customer Support maksimal 3x24 jam setelah menerima. Kami akan membantu retur atau penggantian produk.</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Contact Form -->
-    <section class="contact-section">
-      <h2>Contact Form</h2>
-      <form id="contact-form">
-        <label for="name">Nama</label>
-        <input type="text" id="name" required>
-        
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
-        
-        <label for="message">Pesan</label>
-        <textarea id="message" rows="4" required></textarea>
-        
-        <button type="submit" id="btn-submit">Submit Contact Form</button>
-      </form>
-    </section>
+        <div id="faq-list" class="faq-list" role="list">
+          <!-- FAQ items inserted from scripts/help.js -->
+        </div>
+      </section>
 
-    <!-- Support Channels -->
-    <section class="support-section">
-      <h2>Customer Support</h2>
-      <button id="btn-call">Call Support</button>
-    </section>
+      <!-- RIGHT: Support + Contact form -->
+      <aside class="card support-card" aria-labelledby="support-title">
+        <h2 id="support-title">Butuh Bantuan Langsung?</h2>
 
-    <!-- Policy Links -->
-    <section class="policy-section">
-      <h2>Kebijakan</h2>
-      <a href="docs/policy.pdf" download id="btn-policy">Download Policy</a>
-    </section>
-  </div>
+        <div class="support-block">
+          <div class="support-row">
+            <div class="support-label">Telepon</div>
+            <div class="support-value"><a href="tel:+6281234567890">(+62) 812-3456-7890</a></div>
+          </div>
 
-  <!-- Footer -->
+          <div class="support-row">
+            <div class="support-label">Email</div>
+            <div class="support-value"><a href="mailto:support@malibushop.example">support@malibushop.example</a></div>
+          </div>
+
+          <div class="support-row">
+            <div class="support-label">Jam Operasional</div>
+            <div class="support-value muted">Senin–Sabtu 08:00–17:00</div>
+          </div>
+        </div>
+
+        <hr>
+
+        <h3>Hubungi Kami</h3>
+        <form id="help-contact-form" class="compact-form" novalidate>
+          <label for="hname">Nama</label>
+          <input id="hname" name="name" class="input" type="text" placeholder="Nama" required>
+
+          <label for="hemail">Email</label>
+          <input id="hemail" name="email" class="input" type="email" placeholder="email@domain.com" required>
+
+          <label for="hmessage">Pesan singkat</label>
+          <textarea id="hmessage" name="message" rows="4" placeholder="Tuliskan pertanyaan singkat..." required></textarea>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary" id="help-send">Kirim</button>
+            <button type="button" class="btn ghost" id="help-clear">Bersihkan</button>
+          </div>
+
+          <div id="help-notify" class="notify" aria-live="polite" style="display:none"></div>
+        </form>
+
+        <hr>
+
+        <div class="policy-links">
+          <a href="docs/policy.pdf" class="btn ghost" download>Unduh Kebijakan</a>
+          <a href="contact.html" class="btn" style="margin-left:8px">Contact Page</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- footer injected by footer.js -->
   <div id="footer-placeholder"></div>
 
-  <!-- Scripts -->
+  <!-- scripts (header first) -->
   <script src="scripts/header.js"></script>
-  <script src="scripts/help.js"></script>
   <script src="scripts/cart.js"></script>
-  <script>
-    // Inject header & footer
-    fetch('header.html').then(r => r.text()).then(t => document.getElementById('header-placeholder').innerHTML = t);
-    fetch('footer.html').then(r => r.text()).then(t => document.getElementById('footer-placeholder').innerHTML = t);
-  </script>
+  <script src="scripts/footer.js"></script>
+  <script src="scripts/help.js"></script>
 </body>
 </html>
