@@ -1,0 +1,55 @@
+/* styles/contact.css - mengikuti desain project (gunakan var dari ecommerce.css/index.css) */
+
+.contact-hero { margin-bottom: 10px; }
+.page-title { font-size: 2rem; margin: 6px 0; color: var(--text, #0f172a); }
+.muted { color: var(--muted, #6b7280); }
+
+/* grid layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+/* cards reuse project style */
+.card { background: var(--card, #fff); border-radius: 12px; padding: 18px; box-shadow: var(--shadow-soft, 0 4px 10px rgba(16,24,40,0.06)); }
+
+/* form card specifics */
+.contact-form-card .card-title,
+.contact-info-card .card-title { margin: 0 0 10px 0; font-size: 1.1rem; color: var(--text); }
+
+.contact-form { display: block; }
+.row { margin-bottom: 12px; }
+.row.split { display:flex; gap:12px; }
+.row.split > div { flex:1; }
+
+label { display:block; margin-bottom:6px; font-weight:600; color:var(--text); }
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid #e5e7eb; font-size:0.95rem; background:#fff;
+}
+textarea { min-height:140px; resize:vertical; }
+
+.req { color:#e11d48; margin-left:6px; font-weight:700; }
+
+/* actions */
+.actions { display:flex; align-items:center; gap:10px; margin-top:6px; }
+.btn { padding:10px 12px; border-radius:10px; cursor:pointer; border:1px solid transparent; background:transparent; }
+.btn.primary { background:var(--accent, #118f8a); color:#fff; border-color:var(--accent, #118f8a); font-weight:700; }
+.btn.ghost { background:transparent; color:var(--text,#111827); border:1px solid #e5e7eb; }
+
+.notify { padding:10px 12px; border-radius:8px; margin-bottom:12px; font-weight:600; }
+.notify-success { background: #ecfdf5; color: #065f46; border:1px solid #bbf7d0; }
+.notify-error { background: #fff1f2; color: #991b1b; border:1px solid #fecaca; }
+
+/* info card */
+.contact-info-card .info-row { display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
+.contact-info-card .map-wrap { margin-top:10px; border-radius:8px; overflow:hidden; }
+
+/* responsive */
+@media (max-width: 980px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-info-card { order: 2; }
+  .contact-form-card { order: 1; }
+}
