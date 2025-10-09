@@ -1,7 +1,14 @@
 <!doctype html>
 <html lang='id'>
-<head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Favorites</title>
-<link rel='stylesheet' href='styles/header.css'><link rel='stylesheet' href='styles/products.css'><link rel='stylesheet' href='styles/footer.css'><link rel="stylesheet" href="assets/css/ecommerce.css">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>Favorites</title>
+  <link rel='stylesheet' href='styles/header.css'>
+  <link rel='stylesheet' href='styles/products.css'>
+  <link rel='stylesheet' href='styles/footer.css'>
+  <link rel='stylesheet' href='styles/favorites.css'>
+  <link rel="stylesheet" href="assets/css/ecommerce.css">
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -13,19 +20,32 @@
   <script src="scripts/products.js"></script>
   <script>
     function getFavorites() {
-      try { return JSON.parse(localStorage.getItem('favorites') || '[]'); } catch(e){ return []; }
+      try { 
+        return JSON.parse(localStorage.getItem('favorites') || '[]'); 
+      } catch(e){ 
+        return []; 
+      }
     }
+
+    function removeFavorite(id){
+      let favs = getFavorites();
+      favs = favs.filter(fid => fid !== id);
+      localStorage.setItem('favorites', JSON.stringify(favs));
+    }
+
     function renderFavoritesPage(){
       const grid = document.getElementById('favorites-grid');
       if(!grid) return;
       const favs = getFavorites();
       const arr = (typeof PRODUCTS !== 'undefined') ? PRODUCTS : [];
       grid.innerHTML = '';
-      const items = arr.filter(p => favs.indexOf(p.id) !== -1);
+      const items = arr.filter(p => favs.includes(p.id));
+      
       if(items.length === 0){
         grid.innerHTML = '<p>Belum ada produk favorit. <a href="products.html">Telusuri produk</a></p>';
         return;
       }
+
       items.forEach(function(p){
         const card = document.createElement('div');
         card.className = 'product-card';
@@ -37,22 +57,34 @@
             <div class="product-meta">
               <span class="price">Rp ${p.price.toLocaleString('id-ID')}</span>
               <div class="actions">
-                <button class="add-cart">Tambah ke Keranjang</button>
-                <button class="remove-fav">Hapus Favorit</button>
+                <button class="btn add-cart">Tambah Keranjang</button>
+                <button class="btn remove-fav danger">Hapus Favorit</button>
               </div>
             </div>
           </div>
         `;
         grid.appendChild(card);
+
+        // Event tombol
         card.querySelector('.add-cart').addEventListener('click',()=> addToCart(p,1));
-        card.querySelector('.remove-fav').addEventListener('click',()=>{ toggleFavorite(p.id); renderFavoritesPage(); if(typeof renderFavoritesCount==='function') renderFavoritesCount(); });
+        card.querySelector('.remove-fav').addEventListener('click',()=>{
+          removeFavorite(p.id); 
+          renderFavoritesPage(); 
+          if(typeof renderFavoritesCount==='function') renderFavoritesCount();
+        });
       });
     }
-    document.addEventListener('DOMContentLoaded', function(){ renderFavoritesPage(); if(typeof renderFavoritesCount==='function') renderFavoritesCount(); });
+
+    document.addEventListener('DOMContentLoaded', function(){ 
+      renderFavoritesPage(); 
+      if(typeof renderFavoritesCount==='function') renderFavoritesCount(); 
+    });
   </script>
 
-  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
-  <script src="scripts/cart.js"></script>
-</div>
+  <div id="footer-placeholder">
+    <script src="scripts/header.js"></script>
+    <script src="scripts/cart.js"></script>
+    <script src="scripts/footer.js"></script>
+  </div>
 </body>
 </html>
