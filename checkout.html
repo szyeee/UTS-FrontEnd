@@ -14,16 +14,16 @@
     .checkout-left {flex:2; display:flex; flex-direction:column; gap:20px;}
     .checkout-right {flex:1;}
     .card {background:#fff; border-radius:10px; padding:16px; box-shadow:0 2px 6px rgba(0,0,0,0.08);}
-    .card h2 {font-size:1.1em; margin-bottom:12px; color:#1e3a8a;}
+    .card h2 {font-size:1.1em; margin-bottom:12px; color:var(--accent);}
     .checkout-item {display:flex; gap:12px; align-items:center;}
     .checkout-item img {width:70px; height:70px; object-fit:cover; border-radius:8px; border:1px solid #e5e7eb;}
     .summary-card {position:sticky; top:80px;}
     .summary-prices {margin:16px 0;}
     .summary-prices p {display:flex; justify-content:space-between; margin:6px 0;}
     .summary-prices hr {border:none; border-top:1px solid #e5e7eb; margin:10px 0;}
-    .summary-prices .total {font-size:1.1em; font-weight:bold; color:#1e40af;}
-    .btn {background:#2563eb; color:#fff; padding:10px 16px; border:none; border-radius:8px; cursor:pointer; font-weight:600;}
-    .btn:hover {background:#1e3a8a;}
+    .summary-prices .total {font-size:1.1em; font-weight:bold; color: red;}
+    .btn {background:var(--accent); color:#fff; padding:10px 16px; border:none; border-radius:8px; cursor:pointer; font-weight:600;}
+    .btn:hover {background:var(--accent);}
     .btn.secondary {background:#e5e7eb; color:#374151;}
     .modal {display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;}
     .modal-body {background:#fff; padding:20px; border-radius:10px; width:90%; max-width:420px;}
@@ -45,14 +45,10 @@
       </div>
 
       <div class="card">
-        <h2>Produk Dipesan</h2>
-        <div id="order-lines">
+       <h2>Produk Dipesan</h2>
+      <div id="order-lines"></div>
+      </div>
           <div class="checkout-item">
-            <img src="https://via.placeholder.com/70" alt="Produk">
-            <div>
-              <h3>Sneakers Sport Edition</h3>
-              <p>Rp119.000</p>
-            </div>
           </div>
         </div>
       </div>

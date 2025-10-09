@@ -1,10 +1,55 @@
-/* help.css - basic styles */
-body{
-    font-family:Arial,Helvetica,sans-serif
+/* styles/help.css - sesuai desain project (cards, input, buttons) */
+
+.page-head { text-align:left; margin-bottom:12px; }
+.page-title { font-size:1.75rem; margin:0; color:var(--text,#0f172a); }
+.muted { color:var(--muted,#6b7280); }
+
+/* layout */
+.grid-help {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
 }
 
-.container{
-    max-width:1100px;
-    margin:0 auto;
-    padding:16px
+/* reuse project card style */
+.card { background:var(--card,#fff); border-radius:10px; padding:16px; box-shadow:var(--shadow-soft,0 6px 18px rgba(16,24,40,0.06)); }
+
+/* FAQ area */
+.faq-search-wrap { display:flex; gap:8px; align-items:center; margin-top:8px; margin-bottom:12px; }
+.input { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e5e7eb; font-size:0.95rem; background:#fff; }
+.btn.small { padding:8px 10px; font-size:0.85rem; }
+
+.faq-list { display:flex; flex-direction:column; gap:8px; }
+.faq-item { border-radius:8px; overflow:hidden; border:1px solid #f1f5f9; }
+.faq-question {
+  width:100%; text-align:left; background:transparent; border:0; padding:12px 14px; cursor:pointer; font-weight:600;
+  display:flex; justify-content:space-between; align-items:center; font-size:0.98rem;
+}
+.faq-question:focus { outline:2px solid rgba(17,24,39,0.06); }
+.faq-answer { padding:12px 14px; border-top:1px solid #f1f5f9; display:none; color:var(--muted,#4b5563); }
+
+/* support / contact form */
+.support-card .support-block { display:flex; flex-direction:column; gap:10px; margin-bottom:10px; }
+.support-row { display:flex; gap:8px; justify-content:space-between; align-items:center; }
+.support-label { font-weight:700; color:var(--text,#111827); }
+.support-value a { color:var(--accent,#0ea5a3); text-decoration:none; }
+
+/* compact form inside card */
+.compact-form label { display:block; margin-bottom:6px; margin-top:8px; font-weight:600; }
+.compact-form .input, .compact-form textarea { width:100%; padding:8px 10px; border-radius:8px; border:1px solid #e5e7eb; font-size:0.95rem; }
+.form-actions { display:flex; gap:8px; align-items:center; margin-top:10px; }
+
+/* notify */
+.notify { margin-top:10px; padding:10px 12px; border-radius:8px; display:none; }
+.notify.success { background:#ecfdf5; color:#065f46; border:1px solid #bbf7d0; }
+.notify.error { background:#fff1f2; color:#7f1d1d; border:1px solid #fecaca; }
+
+/* policy links */
+.policy-links { display:flex; gap:8px; margin-top:12px; }
+
+/* responsive */
+@media (max-width: 980px) {
+  .grid-help { grid-template-columns: 1fr; }
+  .support-card { order: 2; }
+  .faq-card { order: 1; }
 }
