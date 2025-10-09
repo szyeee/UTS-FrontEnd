@@ -1,19 +1,36 @@
-<!doctype html><html lang='id'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Order History</title>
-<link rel='stylesheet' href='styles/header.css'><link rel='stylesheet' href='styles/index.css'><link rel='stylesheet' href='styles/footer.css'><link rel="stylesheet" href="assets/css/ecommerce.css">
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pesanan Saya - MalibuShop</title>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="assets/css/ecommerce.css">
+  <link rel="stylesheet" href="styles/order-history.css">
 </head>
 <body>
   <div id="header-placeholder"></div>
 
-  
+  <main class="order-container">
+    <h1 class="page-title">Pesanan Saya</h1>
+    <div id="order-list" class="order-list"></div>
+  </main>
 
-<div class='container'><h1>Order History</h1><p>Halaman contoh untuk order-history. Silakan lengkapi sesuai spesifikasi.</p></div>
+  <!-- Modal Detail Pesanan (landscape) -->
+  <div id="order-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-label="Detail Pesanan">
+    <div class="modal-content">
+      <button id="order-modal-close" class="modal-close" aria-label="Tutup">&times;</button>
+      <button class="close-btn">✕</button>
+      <button class="shipping-btn">Lihat Pengiriman</button>
+      <div id="order-detail" class="order-detail"></div>
+    </div>
+  </div>
 
+  <div id="footer-placeholder"></div>
 
-
-
-  
-
-  <div id="footer-placeholder">  <script src="scripts/header.js"></script>
+  <script src="scripts/header.js"></script>
   <script src="scripts/cart.js"></script>
-</div>
-</body></html>
+  <script src="scripts/order-history.js"></script>
+  <script src="scripts/footer.js"></script>
+</body>
+</html>

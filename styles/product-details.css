@@ -1,76 +1,64 @@
-.product-wrap{
-    display:flex; 
-    gap:22px; 
-    align-items:flex-start; 
-    margin-top:20px
+/* Warna tema pink tetap */
+:root {
+  --pink: #ff9ecb;
+  --pink-dark: #ff6ca8;
+  --bg-light: #fff3f8;
 }
 
-.media{
-    flex:0 0 420px
+/* Header */
+.site-header {
+  background: var(--pink);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: 3px solid var(--pink-dark);
 }
 
-.media img{
-    width:100%; 
-    border-radius:12px;
+/* Container produk */
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  background-color: var(--bg-light);
+  padding: 30px;
 }
 
-.info{
-    flex:1; 
-    background:var(--card); 
-    padding:18px; 
-    border-radius:12p
+/* Kartu produk */
+.product-card {
+  background: white;
+  border: 2px solid var(--pink);
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.2s ease;
 }
 
-.info h1{
-    margin:0 0 8px
+.product-card:hover {
+  transform: scale(1.05);
 }
 
-.price{
-    color:var(--accent); 
-    font-weight:700; 
-    font-size:20px
+/* GAMBAR PRODUK */
+.product-img {
+  width: 100%;
+  height: 180px; /* ukuran tetap */
+  object-fit: contain; /* 🔥 Gambar menyesuaikan tanpa keluar dari kotak */
+  object-position: center;
+  border-radius: 8px;
+  background-color: #ffe6f0; /* latar belakang pink muda biar serasi */
 }
 
-.qty{
-    display:flex; 
-    gap:8px; 
-    align-items:center; 
-    margin-top:12px
+/* Teks produk */
+.product-name {
+  color: var(--pink-dark);
+  font-size: 18px;
+  margin: 10px 0 5px;
 }
 
-.qty input{
-    width:80px; 
-    padding:8px; 
-    border-radius:8px; 
-    border:1px solid rgba(15,23,42,0.06)
-}
-
-.buy-actions{
-    margin-top:14px; 
-    display:flex; 
-    gap:10px
-}
-
-.btn-primary{
-    background:var(--accent); 
-    color:#fff; 
-    padding:10px 14px; 
-    border-radius:10px; 
-    border:0
-}
-
-.btn-ghost{
-    background:transparent; 
-    border:1px solid rgba(15,23,42,0.08); 
-    padding:10px 14px; 
-    border-radius:10px
-}
-
-@media(max-width:880px){ 
-    .product-wrap{
-        flex-direction:column
-    } 
-    .media{
-        width:100%
-    } 
+.product-price {
+  color: #444;
+  font-weight: 500;
 }

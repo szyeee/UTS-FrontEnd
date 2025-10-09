@@ -44,19 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // thumbnails
   const thumbs = document.getElementById('thumbnails');
-  thumbs.innerHTML = '';
-  for (let i = 0; i < 3; i++) {
-    const t = document.createElement('img');
-    t.src = product.img;
-    t.style.width = '72px';
-    t.style.height = '72px';
-    t.style.objectFit = 'cover';
-    t.style.borderRadius = '8px';
-    t.style.cursor = 'pointer';
-    t.onclick = () => mainImage.src = t.src;
-    thumbs.appendChild(t);
-  }
-
+  thumbs.innerHTML = ''; 
   // favorit
   const favBtn = document.getElementById('save-wishlist');
   function updateFavUI() {

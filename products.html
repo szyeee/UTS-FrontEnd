@@ -11,5 +11,7 @@
 <div id="footer-placeholder"></div>
 <script src="scripts/products.js"></script>
 <script>document.addEventListener('DOMContentLoaded', function(){ renderFilters(); renderProducts('', '', {compact:true}); document.getElementById('product-search') && document.getElementById('product-search').addEventListener('input', function(){ renderProducts(document.querySelector('.filter-btn.active')?document.querySelector('.filter-btn.active').dataset.cat:'', this.value, {compact:true}); }); });</script>
-<script src="scripts/header.js"></script><script src="scripts/cart.js"></script>
+<script src="scripts/header.js"></script>
+<script src="scripts/cart.js"></script>
+<script src="scripts/footer.js"></script>
 </body></html>
